@@ -1,38 +1,27 @@
-- `problem/` → Initial non-SOLID code, shows tight coupling and nested if-statements for different shapes.  
-- `principles/solid/` → Iterative application of each SOLID principle.  
-  - `srp/` → Single Responsibility Principle applied.  
-  - `ocp/` → Open/Closed Principle applied on top of SRP.  
-  - `lsp/` → Liskov Substitution Principle applied on top of OCP.  
-  - `isp/` → Interface Segregation Principle applied on top of LSP.  
-  - `dip/` → Dependency Inversion Principle applied on top of ISP.
+# SOLID with Figures
+
+SOLID principles explained with geometric figures, in TypeScript. I wrote this to make the principles stick in my own head, the way I understand things best: with concrete shapes instead of abstract `AbstractFactoryManager` examples.
+
+## The idea
+
+Every SOLID principle gets demonstrated with figures (circles, squares, triangles): one example violating the principle, one respecting it, side by side. If you can see why a `Square` should not inherit from `Rectangle`, Liskov stops being a definition you memorize and becomes something you recognize in code review.
+
+<!-- [JAVIER: confirma que esta descripción matchea el contenido real del repo; si cada principio tiene su carpeta, lista la estructura aquí] -->
+
+## Contents
+
+- **S** — Single Responsibility
+- **O** — Open/Closed
+- **L** — Liskov Substitution
+- **I** — Interface Segregation
+- **D** — Dependency Inversion
+
+Each one with a "don't" and a "do" in plain TypeScript, no frameworks.
+
+## Why it's public
+
+I apply clean architecture daily (it is the backbone of how I built [Lab2Next](https://lab2next.com)), and this repo is where those fundamentals live in their simplest form. Learning in public keeps me honest.
 
 ---
 
-## Principles Explanation
-
-### 1. SRP – Single Responsibility Principle
-- **Problem:** Shape classes handled both area calculation and printing.  
-- **Solution:** Separated responsibilities:  
-  - Shape classes calculate area.  
-  - `AreaPrinter` handles output.  
-- **Impact:** Classes have one responsibility, easier to maintain and test.
-
-### 2. OCP – Open/Closed Principle
-- **Problem:** Adding new shapes required modifying existing code.  
-- **Solution:** Introduced a `Shape` abstraction.  
-- **Impact:** You can add new shapes without modifying existing clients.
-
-### 3. LSP – Liskov Substitution Principle
-- **Problem:** Some subclasses (e.g., Square extending Rectangle) could break substitutability.  
-- **Solution:** Each concrete shape implements the `Shape` interface directly.  
-- **Impact:** Any client using `Shape` can safely use any concrete implementation.
-
-### 4. ISP – Interface Segregation Principle
-- **Problem:** Clients were forced to depend on methods they did not use.  
-- **Solution:** Split interfaces: `AreaCalculable`, `PerimeterCalculable`.  
-- **Impact:** Clients depend only on the interfaces they actually use.
-
-### 5. DIP – Dependency Inversion Principle
-- **Problem:** High-level modules depended on concrete classes.  
-- **Solution:** `AreaPrinter` depends on the `Shape` abstraction instead of concrete shapes.  
-- **Impact:** High-level modules are decoupled from low-level modules. New shapes can be added without changing the printer.
+By [Javier Chi Ortiz](https://javierchiortiz.dev/en). Fundamentals first, like in karate: nobody throws a clean kick without a thousand basic ones. 🥋
