@@ -1,0 +1,17 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Logs and OS files
+npm-debug.log*
+.DS_Store
+
+# Local AI agent files (never committed)
+.claude/
+.codex/
+.cursor/
+.github/copilot-instructions.md
+.github/instructions/
+CLAUDE.md
+AGENTS.md

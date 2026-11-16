@@ -17,7 +17,7 @@
  */
 import { Rectangle } from './Rectangle';
 
-class BadSquare extends Rectangle {
+export class BadSquare extends Rectangle {
   constructor(side: number) {
     super(side, side);
   }

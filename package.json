@@ -1,0 +1,27 @@
+{
+  "name": "solid-with-figures",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The SOLID principles as a step-by-step TypeScript refactor of a shapes program.",
+  "license": "MIT",
+  "author": "Javier Chi Ortiz",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "problem": "tsx src/problem/main.ts",
+    "srp": "tsx src/principles/solid/srp/main.ts",
+    "ocp": "tsx src/principles/solid/ocp/main.ts",
+    "lsp": "tsx src/principles/solid/lsp/main.ts",
+    "isp": "tsx src/principles/solid/isp/main.ts",
+    "dip": "tsx src/principles/solid/dip/main.ts",
+    "steps": "npm run problem && npm run srp && npm run ocp && npm run lsp && npm run isp && npm run dip",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
