@@ -23,6 +23,8 @@ import { Shape } from './Shape';
  * - LSP/ISP/DIP: to be further addressed in later iterations.
  */
 export class Circle implements Shape {
+  readonly name = 'Circle';
+
   constructor(public radius: number) {}
 
   area(): number {

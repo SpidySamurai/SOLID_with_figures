@@ -14,7 +14,8 @@
  *   can break substitutability because client code expecting Rectangle semantics may be surprised.
  *
  * SOLUTION (this contract):
- * - Keep Shape's contract minimal and stable: `area()` returns a numeric area.
+ * - Keep Shape's contract minimal and stable: `area()` returns a numeric area,
+ *   `name` labels the figure.
  * - Concrete shapes must honor the semantic meaning of area(), be deterministic, and not introduce
  *   unexpected side effects or change observable invariants that clients rely on.
  *
@@ -23,5 +24,6 @@
  * - LSP works together with OCP: we add shapes (extensions) that obey Shape contract.
  */
 export interface Shape {
+  readonly name: string;
   area(): number;
 }

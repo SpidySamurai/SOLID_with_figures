@@ -15,6 +15,8 @@ import { Shape } from './Shape';
  *   Those expectations reduce substitutability.
  */
 export class Rectangle implements Shape {
+  readonly name = 'Rectangle';
+
   constructor(public width: number, public height: number) {}
 
   area(): number {

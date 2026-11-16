@@ -17,6 +17,8 @@ import { Shape } from './Shape';
  * - OCP: satisfied for triangle.
  */
 export class Triangle implements Shape {
+  readonly name = 'Triangle';
+
   constructor(public base: number, public height: number) {}
 
   area(): number {

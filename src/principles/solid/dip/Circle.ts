@@ -11,6 +11,8 @@ import { Shape } from './Shape';
  * - Can replace or extend shapes without modifying clients.
  */
 export class Circle implements Shape {
+  readonly name = 'Circle';
+
   constructor(public radius: number) {}
 
   area(): number {

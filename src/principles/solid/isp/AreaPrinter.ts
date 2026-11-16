@@ -1,4 +1,5 @@
 import { AreaCalculable } from './AreaCalculable';
+import { Named } from './Named';
 
 /**
  * AreaPrinter depends only on AreaCalculable
@@ -10,15 +11,15 @@ import { AreaCalculable } from './AreaCalculable';
  *
  * ISP APPLICATION:
  * - AreaPrinter does not depend on a fat Shape interface
- * - Only needs area() method
+ * - Needs area() and a name, so it asks for AreaCalculable & Named:
+ *   two small interfaces composed at the point of use
  *
  * IMPACT:
  * - SRP/OCP/LSP: maintained
  * - ISP: satisfied — clients are minimal and focused
  */
 export class AreaPrinter {
-  print(shape: AreaCalculable & { constructor?: { name?: string } }) {
-    const name = shape.constructor?.name ?? 'Shape';
-    console.log(`The area of the ${name} is ${shape.area()}`);
+  print(shape: AreaCalculable & Named) {
+    console.log(`The area of the ${shape.name} is ${shape.area()}`);
   }
 }

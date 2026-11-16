@@ -1,4 +1,5 @@
 import { AreaCalculable } from './AreaCalculable';
+import { Named } from './Named';
 
 /**
  * Rectangle implements only AreaCalculable
@@ -11,7 +12,9 @@ import { AreaCalculable } from './AreaCalculable';
  * - Clients depending on AreaCalculable are not coupled to unused methods.
  * - Easy to extend later with PerimeterCalculable if needed.
  */
-export class Rectangle implements AreaCalculable {
+export class Rectangle implements AreaCalculable, Named {
+  readonly name = 'Rectangle';
+
   constructor(public width: number, public height: number) {}
 
   area(): number {

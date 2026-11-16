@@ -14,6 +14,8 @@ import { Shape } from './Shape';
  * - OCP: demonstrated (open for extension).
  */
 export class Square implements Shape {
+  readonly name = 'Square';
+
   constructor(public side: number) {}
 
   area(): number {

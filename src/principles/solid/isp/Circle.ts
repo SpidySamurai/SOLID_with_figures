@@ -1,4 +1,5 @@
 import { AreaCalculable } from './AreaCalculable';
+import { Named } from './Named';
 import { PerimeterCalculable } from './PerimeterCalculable';
 
 /**
@@ -20,7 +21,9 @@ import { PerimeterCalculable } from './PerimeterCalculable';
  * - SRP/OCP/LSP: maintained
  * - ISP: satisfied — clients use focused interfaces
  */
-export class Circle implements AreaCalculable, PerimeterCalculable {
+export class Circle implements AreaCalculable, PerimeterCalculable, Named {
+  readonly name = 'Circle';
+
   constructor(public radius: number) {}
 
   area(): number {

@@ -8,16 +8,18 @@
  * - ISP: split interfaces (AreaCalculable, PerimeterCalculable)
  *
  * DIP GOAL:
- * - High-level modules (like printers) should depend on abstractions, not concrete shapes.
+ * - High-level modules (like printers) should depend on abstractions, not on
+ *   concrete figures or concrete output channels.
  *
  * SOLUTION:
  * - Keep Shape as an interface. Concrete shapes implement it.
- * - Clients will depend on Shape abstraction only, not specific classes.
+ * - AreaPrinter depends on Shape and on an injected output function.
  *
  * IMPACT:
  * - SRP/OCP/LSP/ISP: preserved
  * - DIP: high-level modules no longer depend on concrete implementations
  */
 export interface Shape {
+  readonly name: string;
   area(): number;
 }

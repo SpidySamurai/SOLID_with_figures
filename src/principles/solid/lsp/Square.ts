@@ -16,6 +16,8 @@ import { Shape } from './Shape';
  * - There are no assumptions about setters or mutability that differ from Rectangle.
  */
 export class Square implements Shape {
+  readonly name = 'Square';
+
   constructor(public side: number) {}
 
   area(): number {

@@ -18,6 +18,8 @@ import { Shape } from './Shape';
  * - OCP: satisfied for rectangle.
  */
 export class Rectangle implements Shape {
+  readonly name = 'Rectangle';
+
   constructor(public width: number, public height: number) {}
 
   area(): number {

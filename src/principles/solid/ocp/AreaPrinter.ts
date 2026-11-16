@@ -22,7 +22,7 @@ import { Shape } from './Shape';
  * - ISP not addressed here; area is still the only required capability for printing.
  */
 export class AreaPrinter {
-  print(shape: Shape & { constructor: { name: string } }) {
-    console.log(`The area of the ${shape.constructor.name} is ${shape.area()}`);
+  print(shape: Shape) {
+    console.log(`The area of the ${shape.name} is ${shape.area()}`);
   }
 }

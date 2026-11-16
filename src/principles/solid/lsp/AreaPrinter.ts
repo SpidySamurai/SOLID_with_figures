@@ -15,7 +15,7 @@ import { Shape } from './Shape';
  * - Keep Shape contract minimal and ensure implementations behave predictably.
  */
 export class AreaPrinter {
-  print(shape: Shape & { constructor: { name: string } }) {
-    console.log(`The area of the ${shape.constructor.name} is ${shape.area()}`);
+  print(shape: Shape) {
+    console.log(`The area of the ${shape.name} is ${shape.area()}`);
   }
 }

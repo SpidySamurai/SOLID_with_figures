@@ -14,7 +14,9 @@
  *   forced changes in existing modules.
  *
  * SOLUTION (this interface):
- * - Define a minimal abstraction: Shape with a single area() method.
+ * - Define a minimal abstraction: Shape with an area() method and a display name.
+ * - Each figure declares its own name, so printers never read constructor.name
+ *   (class names are not stable once code is minified).
  * - Concrete shapes will implement this interface and provide their own logic.
  * - High-level modules (printers, aggregators, clients) will depend on Shape.
  *
@@ -29,5 +31,6 @@
  * - DIP: partially applied (higher-level modules depend on abstraction), full DIP needs printer abstraction later.
  */
 export interface Shape {
+  readonly name: string;
   area(): number;
 }

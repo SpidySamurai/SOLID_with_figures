@@ -10,6 +10,8 @@ import { Shape } from './Shape';
  * - High-level modules depend on Shape abstraction, not Rectangle specifics
  */
 export class Rectangle implements Shape {
+  readonly name = 'Rectangle';
+
   constructor(public width: number, public height: number) {}
 
   area(): number {
