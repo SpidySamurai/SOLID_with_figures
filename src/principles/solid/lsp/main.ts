@@ -2,21 +2,34 @@ import { Shape } from './Shape';
 import { Rectangle } from './Rectangle';
 import { Square } from './Square';
 import { AreaPrinter } from './AreaPrinter';
+import { BadSquare, MutableRectangle, areaAfterResize } from './BadSquareExample';
 
 /**
  * LSP Iteration - main
  *
  * PURPOSE:
- * - Demonstrate substitutability: code expects Shape and gets Rectangle/Square,
- *   behavior remains correct and predictable.
+ * - Show a real substitution failure first, then the design that avoids it.
  *
- * BEFORE (possible problem if designed badly):
- * - If Square extended Rectangle and changed expected semantics, clients would break.
+ * BEFORE (BadSquareExample.ts):
+ * - BadSquare extends MutableRectangle and overrides its setters.
+ * - areaAfterResize() is correct for a rectangle and wrong for the square.
  *
  * AFTER (LSP applied):
- * - Rectangle and Square both implement Shape and obey the area() contract.
+ * - Rectangle and Square both implement Shape and obey its contract.
  * - AreaPrinter and other consumers can treat them interchangeably.
  */
+
+console.log('--- LSP violation: Square extends Rectangle ---');
+const expected = 5 * 4;
+const candidates: Array<[string, MutableRectangle]> = [
+  ['MutableRectangle', new MutableRectangle(1, 1)],
+  ['BadSquare', new BadSquare(1)],
+];
+for (const [label, rect] of candidates) {
+  const actual = areaAfterResize(rect, 5, 4);
+  const verdict = actual === expected ? 'contract holds' : 'contract broken';
+  console.log(`${label}: resize to 5x4, expected area ${expected}, got ${actual} (${verdict})`);
+}
 
 const shapes: Shape[] = [
   new Rectangle(10, 5),
@@ -25,7 +38,7 @@ const shapes: Shape[] = [
 
 const printer = new AreaPrinter();
 
-console.log('--- LSP Iteration Output ---');
+console.log('--- LSP applied: every Shape is substitutable ---');
 shapes.forEach(shape => printer.print(shape));
 
 /**
