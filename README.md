@@ -51,7 +51,7 @@ npm run typecheck   # tsc in strict mode, no emit
 npm test            # node:test, run through tsx
 ```
 
-CI runs `npm ci`, `npm run typecheck`, `npm test` and `npm run steps` on Node LTS for every push and pull request to `master`.
+CI runs `npm ci`, `npm run typecheck`, `npm test` and `npm run steps` on Node LTS for every push and pull request to `main`.
 
 ## License
 
