@@ -1,27 +1,29 @@
 /**
  * --- PROBLEM ---
  *
- * This class violates several SOLID principles:
+ * One class that knows every figure. It works, but each SOLID principle
+ * points at something that will hurt as the program grows:
  *
  * 1. SRP (Single Responsibility Principle):
  *    - This class calculates areas AND prints them.
- *    - Multiple reasons to change: if printing changes, or area calculation changes.
+ *    - Two reasons to change: the area rules, or the way results are shown.
  *
  * 2. OCP (Open/Closed Principle):
- *    - To add a new shape, we must modify this class.
- *    - Not closed for modification.
+ *    - area() is an if-chain on a `type` string. Adding a figure means
+ *      editing this class, so it is not closed for modification.
  *
  * 3. LSP (Liskov Substitution Principle):
- *    - All shapes are handled via if statements.
- *    - Cannot substitute a new shape without modifying code that uses this class.
+ *    - Not violated here: there are no subtypes yet, so there is nothing to
+ *      substitute. The lsp/ step shows what a real violation looks like.
  *
  * 4. ISP (Interface Segregation Principle):
- *    - This class exposes methods that might not be needed for some clients.
- *    - E.g., printArea is only needed for printing, not calculation.
+ *    - Every client gets one wide surface: optional width, height and radius
+ *      for every figure, and printArea() even for callers that only compute.
  *
  * 5. DIP (Dependency Inversion Principle):
- *    - High-level modules (main.ts) depend on this concrete class.
- *    - No abstraction exists.
+ *    - printArea() writes straight to console.log, so the area logic depends
+ *      on a concrete output detail instead of an abstraction.
+ *    - Callers depend on this concrete class; no abstraction exists.
  */
 export class Shape {
   constructor(public type: string, public width?: number, public height?: number, public radius?: number) {}

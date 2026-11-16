@@ -1,23 +1,26 @@
 import { Shape } from './Shape';
 
 /**
- * Array of different shapes
- * We include multiple shapes to show how nested ifs get complicated
+ * Array of different shapes.
+ *
+ * Note the positional optional parameters: (type, width?, height?, radius?).
+ * `new Shape('circle', 5)` compiles but puts 5 in `width`, and area() throws
+ * at runtime. The type system cannot tell a valid figure from an invalid one.
  */
 const shapes: Shape[] = [
-  new Shape('circle', 5),
-  new Shape('rectangle', undefined, 10, 5),
-  new Shape('triangle', undefined, 6, 4),
+  new Shape('circle', undefined, undefined, 5),
+  new Shape('rectangle', 10, 5),
+  new Shape('triangle', 6, 4),
 ];
 
 /**
- * Demonstrating how the current Shape class behaves
+ * Demonstrating how the current Shape class behaves.
  * Problems visible here:
- * 1. Each shape needs to go through nested ifs
- * 2. Adding a new shape would require modifying area() → OCP violation
- * 3. Calculation and printing are mixed → SRP violation
- * 4. Cannot substitute a Shape subclass without potential errors → LSP violation
- * 5. Directly using console.log → DIP violation
+ * 1. Every figure goes through the same if-chain in area().
+ * 2. Adding a new figure means editing area() → OCP violation.
+ * 3. Calculation and printing live in one class → SRP violation.
+ * 4. printArea() is hardwired to console.log → DIP violation. (Calling
+ *    console.log here in main is fine: this is the program's entry point.)
  */
 console.log('--- Problematic Shape Outputs ---');
 shapes.forEach(shape => shape.printArea());
