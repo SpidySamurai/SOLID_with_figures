@@ -5,6 +5,8 @@ The five SOLID principles as a step-by-step TypeScript refactor of a small shape
 [![CI](https://github.com/SpidySamurai/SOLID_with_figures/actions/workflows/ci.yml/badge.svg)](https://github.com/SpidySamurai/SOLID_with_figures/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+![SOLID_with_figures cover: the repository name and tagline next to the real output of npm run problem and npm run lsp, where BadSquare breaks the resize contract that MutableRectangle keeps.](.github/readme/cover.png)
+
 It starts from one `Shape` class that computes and prints the area of every figure through an if-chain, and refactors it one principle at a time: SRP, OCP, LSP, ISP, then DIP. Each step lives in its own folder, runs on its own, and has comments that say what changed and why. I wrote it to make the principles stick with concrete figures instead of abstract examples.
 
 ## Quick start
